@@ -1,0 +1,16 @@
+<nav *ngIf="isLoggedIn && user_cache.name ">
+  <div class="nav-wrapper">
+     <a href="#" class="brand-logo">Logged in: {{user_cache.name}}</a>
+     <ul class="right">
+        <li><button class="waves-effect waves-light btn" (click)="logout()">Log Out</button></li>
+      </ul>
+  </div>
+</nav>
+<header *ngIf="!isLoggedIn && !user_cache.name" class="login-page">
+  <div class="header-wrapper center">
+    <h1>The <span class="emoji">🌍</span> Needs a Hummus Emoji</h1>
+    <h4>Sign In To Sign <span class="emoji">🖊</span></h4>
+    <h4>the Hummus Emoji Petition</h4>
+    <button class="waves-effect waves-light btn" (click)="login()">Login With Google</button>
+  </div>
+</header>

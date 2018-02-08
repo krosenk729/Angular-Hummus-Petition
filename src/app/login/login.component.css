@@ -1,0 +1,36 @@
+.nav-wrapper{
+	padding-left: .5em;
+	padding-right: .5em;
+}
+
+header{
+	background: #ee6e73;
+	color: #ffffff;
+	width: 100%;
+}
+
+.header-wrapper{
+	padding: 1.5em;
+}
+
+h1{
+	font-size: 3.8rem;
+}
+
+@media screen and (max-width: 600px){
+	nav{
+		height: 100%;
+	}
+	.nav-wrapper{
+		display: flex;
+		flex-direction: column;
+	}
+	.brand-logo{
+		position: relative;
+		text-align: center;
+		font-size: 16px;
+	}
+	ul.right{
+		margin: 0 auto;
+	}
+}

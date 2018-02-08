@@ -1,0 +1,61 @@
+.card-image{
+	max-width: 250px;
+}
+.card.hummus-card{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+@media screen and (max-width: 600px){
+	.card.hummus-card{
+		flex-wrap: wrap;
+		text-align: center;
+	}
+	.card.hummus-card .card-image{
+		flex-basis: 100%;
+		max-width: none;
+		max-height: 160px;
+		overflow: hidden;
+	}
+}
+
+.card.hummus-card .card-content{
+	padding: 0 24px;
+}
+
+.vote-btn{
+	background: #eceff1;
+	border: 2px solid #eceff1;
+	color: #90a4ae;
+	height: auto;
+}
+
+.voted{
+	background: #2bbbad;
+	border: 2px solid #2bbbad;
+	color: white;
+}
+
+.share-block{
+	text-align: center;
+	margin-bottom: 1.5em;
+}
+
+.sign-form{
+	margin-bottom: 2.5em;
+}
+
+input#name{
+	display: block;
+	max-width: 550px;
+}
+
+.form-btn-wrap{
+	margin: 1em;
+}
+
+.radio-wrap{
+	display: inline;
+	padding-right: .9em;
+}

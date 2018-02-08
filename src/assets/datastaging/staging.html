@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<!-- 
+
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+	 -->
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBnmTvL6c9A1SGYnyQY683TbSp5u9Rd-Zc",
+    authDomain: "friendlychat-8d7a5.firebaseapp.com",
+    databaseURL: "https://friendlychat-8d7a5.firebaseio.com",
+    projectId: "friendlychat-8d7a5",
+    storageBucket: "friendlychat-8d7a5.appspot.com",
+    messagingSenderId: "755882330810"
+  };
+  firebase.initializeApp(config);
+</script>
+<script type="text/javascript">
+var addHummus = function(name, img, tags = [], votes = []){
+	// firebase.database().ref('hummuses').push().set({
+	firebase.database().ref('hummuses/' + name).set({
+		name: name,
+		img: img,
+		tags: tags,
+		votes: votes
+	});
+
+	//firebase.database().ref('votes/' + name).set({fakeuserID: 0});
+
+	firebase.database().ref('hummuses').once('child_added', (snap) => {
+		firebase.database().ref('hummuses').child(snap.ge.path.n[1]).update({hummid: snap.ge.path.n[1]});
+
+	});
+};
+
+var myHummuses = [
+	{
+		name: 'Spicy',
+		img: 'https://firebasestorage.googleapis.com/v0/b/friendlychat-8d7a5.appspot.com/o/spicy.jpg?alt=media&token=167c7191-9baf-4b64-949e-b681f0eb7ac5',
+		tags: ['good for you', 'zesty'],
+		votes: [{'fakeuserID': 0}]
+	}, 
+	{
+		name: 'Beet',
+		img: 'https://firebasestorage.googleapis.com/v0/b/friendlychat-8d7a5.appspot.com/o/beet.jpg?alt=media&token=b0a5e41f-b82e-40e3-b8f7-21481052cdaf',
+		tags: ['good for you', 'unconventional', 'pink'],
+		votes: [{'fakeuserID': 0}]
+	}, 
+	{
+		name: 'Red Pepper',
+		img: 'https://firebasestorage.googleapis.com/v0/b/friendlychat-8d7a5.appspot.com/o/redpepper.jpg?alt=media&token=61c9b9a9-7f54-4736-aaaf-9b75a317be84',
+		tags: ['timeless', 'yummy'],
+		votes: [{'fakeuserID': 0}]
+	},
+	{
+		name: 'Pesto',
+		img: 'https://firebasestorage.googleapis.com/v0/b/friendlychat-8d7a5.appspot.com/o/pesto.jpg?alt=media&token=be0b57b2-d72b-49ad-ac0f-088ee588920e',
+		tags: ['hipster', 'creative'],
+		votes: [{'fakeuserID': 0}]
+	}, 
+	{
+		name: 'Garlic',
+		img: 'https://firebasestorage.googleapis.com/v0/b/friendlychat-8d7a5.appspot.com/o/garlic.jpg?alt=media&token=41568c98-66cd-486b-8771-e076226d5e5a',
+		tags: ['good for you', 'bad for a date'],
+		votes: [{'fakeuserID': 0}]
+	}, 
+];
+
+for( let o of myHummuses ){
+	console.log(o);
+	addHummus(o.name, o.img, o.tags, o.votes );
+}
+
+</script>
+</body>
+</html>

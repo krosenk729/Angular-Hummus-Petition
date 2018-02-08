@@ -1,0 +1,52 @@
+<div class="container hummus-home-page">
+	<div *ngIf="cached_user && !cached_user.hasSigned" class="sign-form">
+		<h3>Sign <span class="emoji">🖊</span></h3>
+		<h5>In Support of a Hummus Emoji</h5>
+		<form (ngSubmit)="userSign()" #hummusForm="ngForm">
+			<label for="name">Your Full Name</label>
+			<input type="text" [(ngModel)]="cached_user.signedName" #name name="name" placeholder="{{cached_user.signedName || cached_user.name}}" id="name" required>
+			<div [hidden]="name.valid || name.pristine">Name is required</div>
+			<label>Do you want there to be a hummus emoji?</label>
+			<div>
+				<div class="radio-wrap">
+					<input #yes name="emoji-vote" type="radio" value="yes" (click)="cached_user.signedVote = yes.value" id="vote-yes" selected required>
+					<label for="vote-yes">Yes</label>
+				</div>
+				<div class="radio-wrap">
+					<input #no name="emoji-vote" type="radio" value="no" (click)="cached_user.signedVote = no.value" id="vote-no">
+					<label for="vote-no">No</label>
+				</div>
+			</div>
+			<div class="form-btn-wrap center">
+				<button class="waves-effect waves-light btn">Sign Petition</button>
+			</div>
+		</form>
+	</div>
+	<div *ngIf="cached_user && cached_user.hasSigned" class="center">
+		<h4>Thanks Being a Hummus Emoji Voter</h4>
+		<p>While we only allow one signature per user, we do allow lots and lots of sharing. Spread the word on social:</p>
+		<div class="share-block">
+			<a class="btn btn-social-icon btn-facebook share s_facebook"><span class="fa fa-facebook"></span></a>
+			<a class="btn btn-social-icon btn-twitter"><span class="fa fa-twitter"></span></a>
+			<a class="btn btn-social-icon btn-google"><span class="fa fa-google"></span></a>
+		</div>
+	</div>
+	<div class="divider"></div>
+	<div *ngIf="hummuses" class="vote-container">
+		<h4>Vote For Your Fave Hummus</h4>
+		<p>What else are you going to do while waiting for your hummus emoji?</p>
+		<div *ngFor="let hummus of hummuses | async" class="card hummus-card">
+			<div class="card-content">
+				<h3>{{hummus.name}}</h3>
+				<button class="btn vote-btn" [class.voted]="hummus.votes[cached_user.id] === 1" (click)="userVote( hummus.name, 1 )"><span class="emoji">👍</span> Love It
+				</button>
+				<button class="btn vote-btn" [class.voted]="hummus.votes[cached_user.id] === -1" (click)="userVote( hummus.name, -1)"><span class="emoji">👎</span> Skip It
+				</button>
+				<h6>Votes: {{ hummus.votes | aggregator }}</h6>
+			</div>
+			<div class="card-image">
+				<img [src]="hummus.img">
+			</div>
+		</div> <!-- card -->
+	</div>
+</div>
