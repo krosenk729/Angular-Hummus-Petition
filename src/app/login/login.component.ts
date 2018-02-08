@@ -14,8 +14,8 @@ import { User } from '../shared/user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private isLoggedIn: boolean;
-  public user_cache: User = {
+  isLoggedIn: boolean;
+  user_cache: User = {
           id: '',
           name: '',
           email: '',
