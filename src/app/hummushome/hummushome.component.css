@@ -51,6 +51,13 @@ input#name{
 	max-width: 550px;
 }
 
+.error-text{
+	color: red;
+	display: inline;
+	padding-left: 8px;
+	color: #c2185b;
+}
+
 .form-btn-wrap{
 	margin: 1em;
 }

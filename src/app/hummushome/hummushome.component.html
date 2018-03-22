@@ -4,8 +4,8 @@
 		<h5>In Support of a Hummus Emoji</h5>
 		<form (ngSubmit)="userSign()" #hummusForm="ngForm">
 			<label for="name">Your Full Name</label>
-			<input type="text" [(ngModel)]="cached_user.signedName" #name name="name" placeholder="{{cached_user.signedName || cached_user.name}}" id="name" required>
-			<div [hidden]="name.valid || name.pristine">Name is required</div>
+			<div [hidden]="name.valid || name.pristine" class="error-text">Name is required</div>
+			<input type="text" [(ngModel)]="cached_user.signedName" #name="ngModel" name="name" placeholder="{{cached_user.signedName || cached_user.name}}" id="name" required>
 			<label>Do you want there to be a hummus emoji?</label>
 			<div>
 				<div class="radio-wrap">
